@@ -3,11 +3,17 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { ChaptersComponent } from './chapters/chapters.component';
+import { ChapterDetailComponent } from './chapter-detail/chapter-detail.component';
+import { FreqAskComponent } from './freq-ask/freq-ask.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ChaptersComponent,
+    ChapterDetailComponent,
+    FreqAskComponent
   ],
   imports: [
     BrowserModule
