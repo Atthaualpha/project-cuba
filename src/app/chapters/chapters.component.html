@@ -1,3 +1,17 @@
 <p>
   chapters works!
 </p>
+<li *ngFor="let chap of chapters">
+  <span>{{chap.id}}</span>
+  <span>{{chap.nombre}}</span>
+</li>
+<input [(ngModel)]="id" (change)="buscarCapituloPorId(id)">
+<div *ngIf="chapter">
+  {{ chapter.id }}
+  {{ chapter.nombre }}
+
+</div>
+<h3>Crear nuevo capitulo</h3>
+<input [(ngModel)]="chapterNew.id">
+<input [(ngModel)]="chapterNew.nombre">
+<button (click)="crearCapitulo()">Crear</button>
