@@ -3,6 +3,7 @@ import { ChapterService } from '../services/chapters/chapter.service';
 import { Chapter } from '../models/chapter/Chapter';
 import { ISubscription } from 'rxjs/Subscription';
 
+
 @Component({
   selector: 'app-chapters',
   templateUrl: './chapters.component.html',
@@ -32,6 +33,8 @@ export class ChaptersComponent implements OnInit, OnDestroy {
   }
 
   buscarCapituloPorId(idCap) {
+
+
     this.subcription = this.chapterService
       .buscarCapituloPorId(idCap)
       .subscribe(capitulo => {
