@@ -3,8 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 export const router: Routes = [
   {
-    path: 'chapter',
-    loadChildren: '../app/chapters/chapter.module#ChapterModule'
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'home'
+  },
+  {
+    path: 'home',
+    loadChildren: '../app/components/home/home.module#HomeModule'
   }
 ];
 

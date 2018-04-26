@@ -1,0 +1,34 @@
+<!-- <p>
+  chapters works!
+</p>
+<li *ngFor="let chap of chapters" class="slideInRight animated">
+  <span>{{chap.id}}</span>
+  <span>{{chap.nombre}}</span>
+</li>
+<input [(ngModel)]="id" (change)="buscarCapituloPorId(id)">
+<div *ngIf="chapter">
+  {{ chapter.id }}
+  {{ chapter.nombre }}
+
+</div>
+<h3>Crear nuevo capitulo</h3>
+<input [(ngModel)]="chapterNew.id">
+<input [(ngModel)]="chapterNew.nombre">
+<button (click)="crearCapitulo()">Crear</button> -->
+
+<div class="row">
+  <div class="col-lg-4 col-sm-6 portfolio-item" *ngFor="let chap of chapters">
+    <div class="card h-100">
+      <a href="#">
+        <img class="card-img-top" src="http://placehold.it/700x400" alt="">
+      </a>
+      <div class="card-body">
+        <h4 class="card-title">
+          <a href="#" [routerLink]="['detail', chap.id]"
+          routerLinkActive="router-link-active" routerLinkActive="router-link-active"  >{{chap.nombre}} </a>
+        </h4>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

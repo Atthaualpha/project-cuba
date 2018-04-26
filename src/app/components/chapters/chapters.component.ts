@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ChapterService } from '../services/chapters/chapter.service';
-import { Chapter } from '../models/chapter/Chapter';
+import { ChapterService } from '../../services/chapters/chapter.service';
+import { Chapter } from '../../models/chapter/Chapter';
 import { ISubscription } from 'rxjs/Subscription';
 
 
@@ -34,7 +34,6 @@ export class ChaptersComponent implements OnInit, OnDestroy {
 
   buscarCapituloPorId(idCap) {
 
-
     this.subcription = this.chapterService
       .buscarCapituloPorId(idCap)
       .subscribe(capitulo => {
@@ -51,6 +50,6 @@ export class ChaptersComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subcription.unsubscribe();
+
   }
 }
