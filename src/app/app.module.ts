@@ -5,19 +5,26 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 
 import { FormsModule } from '@angular/forms';
-import { appRouter } from './app.router';
+import { ChaptersComponent } from './components/chapters/chapters.component';
+import { ChapterDetailComponent } from './components/chapter-detail/chapter-detail.component';
+import { FreqAskComponent } from './components/freq-ask/freq-ask.component';
+import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
+import { ChapterService } from './services/chapters/chapter.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ChaptersComponent,
+    ChapterDetailComponent,
+    FreqAskComponent,
+    NavigationBarComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule,
-    appRouter
+    FormsModule
   ],
-  providers: [
+  providers: [ChapterService
   ],
   bootstrap: [AppComponent]
 })
