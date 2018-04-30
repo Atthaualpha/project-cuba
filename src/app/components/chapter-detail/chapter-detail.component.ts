@@ -14,28 +14,13 @@ export class ChapterDetailComponent implements OnInit {
 
   private subcription: ISubscription;
 
-  @Input() id: 0;
-  chapter: Chapter = {
-    id: 0,
-    nombre: ''
-  };
 
-  constructor(route: ActivatedRoute, private chapterService: ChapterService) {
-      this.id = route.snapshot.params['id'];
+  @Input() chapter: Chapter;
+
+  constructor() {
    }
 
   ngOnInit() {
-    console.log(this.id);
-    this.buscarCapituloPorId(this.id);
   }
 
-
-  buscarCapituloPorId(idCap) {
-
-    this.subcription = this.chapterService
-      .buscarCapituloPorId(idCap)
-      .subscribe(capitulo => {
-        this.chapter = capitulo;
-      });
-  }
 }

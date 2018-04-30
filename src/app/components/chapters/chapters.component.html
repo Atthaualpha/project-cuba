@@ -17,18 +17,17 @@
 <button (click)="crearCapitulo()">Crear</button> -->
 
 <div class="row">
-  <div class="col-lg-4 col-sm-6 portfolio-item" *ngFor="let chap of chapters">
+  <div class="col-lg-4 col-sm-6 portfolio-item" *ngFor="let c of chapters">
     <div class="card h-100">
       <a href="#">
         <img class="card-img-top" src="http://placehold.it/700x400" alt="">
       </a>
       <div class="card-body">
         <h4 class="card-title">
-          <a href="#" [routerLink]="['detail', chap.id]"
-          routerLinkActive="router-link-active" routerLinkActive="router-link-active"  >{{chap.nombre}} </a>
+          <a href="#" (click)="buscarCapituloPorId(c.id)" data-toggle="modal" data-target="#modal-articulo">{{c.nombre}} </a>
         </h4>
-        <router-outlet></router-outlet>
       </div>
     </div>
   </div>
 </div>
+<app-chapter-detail [chapter]="chapter"></app-chapter-detail>

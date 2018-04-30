@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HomeComponent } from '../home/home.component';
-import { homeRouter } from '../home/home.router';
+
 import { NavigationBarComponent } from '../navigation-bar/navigation-bar.component';
 import { ChaptersComponent } from '../chapters/chapters.component';
 import { ChapterService } from '../../services/chapters/chapter.service';
@@ -10,8 +9,8 @@ import { ChapterModule } from '../chapters/chapter.module';
 
 
 @NgModule({
-  declarations: [HomeComponent, NavigationBarComponent, ChaptersComponent],
-  imports: [homeRouter, CommonModule],
+  declarations: [ NavigationBarComponent, ChaptersComponent],
+  imports: [ CommonModule],
   providers: [ChapterService]
 })
 
