@@ -9,7 +9,6 @@ const CHAPTER_ROUTER: Routes = [
   },
   {
     path: 'detail/:id',
-    pathMatch: 'prefix',
     component: ChapterDetailComponent
   }
 ];

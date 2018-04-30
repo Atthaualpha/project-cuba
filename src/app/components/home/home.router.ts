@@ -6,10 +6,6 @@ const HOME_ROUTER: Routes = [
   {
     path: '',
     component: HomeComponent
-  },
-  {
-    path: 'chapter',
-    loadChildren: '../chapters/chapter.module#ChapterModule'
   }
 ];
 

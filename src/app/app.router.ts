@@ -10,6 +10,10 @@ export const router: Routes = [
   {
     path: 'home',
     loadChildren: '../app/components/home/home.module#HomeModule'
+  },
+  {
+    path: 'chapter',
+    loadChildren: '../app/components/chapters/chapter.module#ChapterModule'
   }
 ];
 
