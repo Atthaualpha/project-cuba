@@ -10,7 +10,7 @@ import { ChapterModule } from '../chapters/chapter.module';
 
 
 @NgModule({
-  declarations: [HomeComponent, NavigationBarComponent,ChaptersComponent],
+  declarations: [HomeComponent, NavigationBarComponent, ChaptersComponent],
   imports: [homeRouter, CommonModule],
   providers: [ChapterService]
 })
