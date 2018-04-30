@@ -11,6 +11,7 @@ import { FreqAskComponent } from './components/freq-ask/freq-ask.component';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { ChapterService } from './services/chapters/chapter.service';
 import { ArticleService } from './services/articles/article.service';
+import { AppRouter } from './app.router';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ArticleService } from './services/articles/article.service';
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    AppRouter
   ],
   providers: [ChapterService, ArticleService
   ],

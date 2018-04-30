@@ -1,16 +1,15 @@
-
+<h1 class="text-center">Capitulos</h1>
 <div class="row">
   <div class="col-lg-4 col-sm-6 portfolio-item" *ngFor="let c of chapters">
     <div class="card h-100">
-      <a href="../chapter-detail/chapter-detail.component.html" (click)="buscarArticulos(c.idCapitulo)"  >
+      <a href="#" routerLink="/articulos" routerLinkActive="router-link-active"  (click)="buscarArticulos(c.idCapitulo)"  >
         <img class="card-img-top" src="http://placehold.it/700x400" alt="">
       </a>
       <div class="card-body">
         <h4 class="card-title">
-          <a href="#" (click)="buscarArticulos(c.idCapitulo)" data-toggle="modal" data-target="#modal-articulo">{{c.nombre}} </a>
+          <a href="#" routerLink="/articulos/{{c.idCapitulo}}"  (click)="buscarArticulos(c.idCapitulo)" data-toggle="modal">{{c.nombre}} </a>
         </h4>
       </div>
     </div>
   </div>
 </div>
-<app-chapter-detail [idChapter]="id"></app-chapter-detail>
