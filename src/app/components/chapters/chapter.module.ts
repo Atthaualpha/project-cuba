@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 import { ChapterDetailComponent } from '../chapter-detail/chapter-detail.component';
 
 @NgModule({
-  declarations: [ChapterDetailComponent,ChaptersComponent],
+  declarations: [ChapterDetailComponent, ChaptersComponent],
   imports: [chapterRouter, FormsModule, CommonModule],
   providers: [ChapterService]
 })
