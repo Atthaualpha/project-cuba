@@ -1,14 +1,16 @@
-<h1 class="text-center">Capitulos</h1>
-<div class="row">
-  <div class="col-lg-4 col-sm-6 portfolio-item" *ngFor="let c of chapters">
-    <div class="card h-100">
-      <a href="#" routerLink="/articulos" routerLinkActive="router-link-active"  (click)="buscarArticulos(c.idCapitulo)"  >
-        <img class="card-img-top" src="http://placehold.it/700x400" alt="">
-      </a>
-      <div class="card-body">
-        <h4 class="card-title">
-          <a href="#" routerLink="/articulos/{{c.idCapitulo}}"  (click)="buscarArticulos(c.idCapitulo)" data-toggle="modal">{{c.nombre}} </a>
-        </h4>
+<div class="bounce animated">
+  <h1 class="text-center">Capitulos</h1>
+  <div class="row">
+    <div class="col-lg-4 col-sm-6 portfolio-item" *ngFor="let c of chapters">
+      <div class="card h-100">
+        <a href="#" routerLink="/articulos" routerLinkActive="router-link-active"  (click)="buscarArticulos(c.idCapitulo)"  >
+          <img class="card-img-top" src="http://placehold.it/700x400" alt="">
+        </a>
+        <div class="card-body">
+          <h4 class="card-title">
+            <a href="#" routerLink="/articulos/{{c.idCapitulo}}"  (click)="buscarArticulos(c.idCapitulo)" data-toggle="modal">{{c.nombre}} </a>
+          </h4>
+        </div>
       </div>
     </div>
   </div>
