@@ -10,6 +10,7 @@ import { ChapterDetailComponent } from './components/chapter-detail/chapter-deta
 import { FreqAskComponent } from './components/freq-ask/freq-ask.component';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { ChapterService } from './services/chapters/chapter.service';
+import { ArticleService } from './services/articles/article.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { ChapterService } from './services/chapters/chapter.service';
     HttpClientModule,
     FormsModule
   ],
-  providers: [ChapterService
+  providers: [ChapterService, ArticleService
   ],
   bootstrap: [AppComponent]
 })

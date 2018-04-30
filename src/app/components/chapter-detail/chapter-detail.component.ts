@@ -1,8 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ChapterService } from '../../services/chapters/chapter.service';
 import { ISubscription } from 'rxjs/Subscription';
-import { Chapter } from '../../models/chapter/Chapter';
-import { ActivatedRoute } from '@angular/router';
+import { Article } from '../../models/articles/article';
+import { ArticleService } from '../../services/articles/article.service';
 
 @Component({
   selector: 'app-chapter-detail',
@@ -11,16 +10,22 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ChapterDetailComponent implements OnInit {
 
-
   private subcription: ISubscription;
+  articles: Article[];
 
-
-  @Input() chapter: Chapter;
-
-  constructor() {
-   }
-
-  ngOnInit() {
+  @Input()
+  set idChapter(idChapter: number) {
+    if (idChapter) {
+     this.buscarArticulosPorCapitulo(idChapter);
+    }
   }
 
+  constructor(private articleService: ArticleService) {}
+
+  ngOnInit() {}
+
+  buscarArticulosPorCapitulo(idChapter: number) {
+    this.articleService.buscarArticulosPorCapitulo(idChapter).
+    subscribe(articulos => (this.articles = articulos));
+  }
 }

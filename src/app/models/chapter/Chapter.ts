@@ -1,4 +1,5 @@
-export interface Chapter {
-  id: number;
+export class Chapter {
+  idCapitulo: number;
   nombre: string;
+  url: string;
 }

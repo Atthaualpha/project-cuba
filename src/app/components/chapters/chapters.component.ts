@@ -10,12 +10,15 @@ import { ISubscription } from 'rxjs/Subscription';
   styleUrls: ['./chapters.component.css']
 })
 export class ChaptersComponent implements OnInit, OnDestroy {
-  id: string;
+  id: number;
   chapters: Chapter[];
+
   chapter: Chapter;
+
   chapterNew: Chapter = {
-    id: 0,
-    nombre: ''
+    idCapitulo: 0,
+    nombre: '',
+    url: ''
   };
 
   private subcription: ISubscription;
@@ -32,13 +35,8 @@ export class ChaptersComponent implements OnInit, OnDestroy {
       .subscribe(capitulos => (this.chapters = capitulos));
   }
 
-  buscarCapituloPorId(idCap) {
-
-    this.subcription = this.chapterService
-      .buscarCapituloPorId(idCap)
-      .subscribe(capitulo => {
-        this.chapter = capitulo;
-      });
+  buscarArticulos(idChapter: number) {
+    this.id = idChapter;
   }
 
   crearCapitulo() {
