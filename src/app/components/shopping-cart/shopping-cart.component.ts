@@ -25,4 +25,8 @@ export class ShoppingCartComponent implements OnInit {
   volverAtras() {
     this.location.back();
   }
+
+  eliminarArticulo(articulo: Article) {
+    this.shoppingService.eliminarArticulo(articulo);
+  }
 }

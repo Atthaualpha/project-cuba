@@ -5,16 +5,18 @@ import { SessionStorageService, SessionStorage } from 'ngx-webstorage';
 
 @Injectable()
 export class ShoppingService {
-
-
-  @SessionStorage('shopcart')
-  articulos: Article[];
+  /**
+   * Lista de articulos dentro del carrito almacenado en memoria session storage
+   */
+  @SessionStorage('shopcart') articulos: Article[];
 
   constructor() {}
 
+  /**
+   * @description agrega un nuevo articulo al carrito
+   * @param articulo
+   */
   agregarArticulo(articulo: Article) {
-
-    this.articulos = this.obtenerArticulo();
     if (!this.articulos) {
       this.articulos = [];
     }
@@ -22,11 +24,17 @@ export class ShoppingService {
     this.articulos = this.articulos;
   }
 
+  /**
+   * @description elimina un articulo especifico del carrito
+   */
   eliminarArticulo(articulo: Article) {
-    this.articulos = this.obtenerArticulo();
-    delete this.articulos[0];
+    this.articulos.splice(this.articulos.indexOf(articulo), 1);
+    this.articulos = this.articulos;
   }
 
+  /**
+   * @description devuelve la lista de articulos del carrito
+   */
   obtenerArticulo(): Article[] {
     return this.articulos;
   }
