@@ -1,6 +1,6 @@
 <div class="pulse animated">
-  <div *ngIf="articulos.length > 0">
-    <a href="#" routerLink="/home" style="font-size: 25px;">
+  <div *ngIf="obtenerArticulos()">
+    <a (click)="volverAtras()" style="font-size: 25px; cursor: pointer;">
       <i class="fas fa-arrow-circle-left"></i> Volver</a>
     <h1 class="text-center">Articulos adicionados</h1>
     <table class="table table-hover table-striped">
@@ -15,22 +15,22 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let artl of articulos">
+        <tr *ngFor="let artl of obtenerArticulos()">
           <th scope="row">{{ artl.idArticulo }}</th>
           <td>{{ artl.nombre }}</td>
           <td>{{ artl.unidadMedida }}</td>
           <td>{{ artl.cantidadMax }}</td>
           <td>{{ artl.valoracion }}</td>
           <td>
-            <button style="background-color: transparent; border: none; cursor: pointer;" data-toggle="modal" data-target="#modal-add-article">
-              <i class="fas fa-cart-arrow-down fa-2x"></i>
+            <button style="background-color: transparent; border: none; cursor: pointer; color: #be0000">
+              <i class="fas fa-times fa-2x"></i>
             </button>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
-  <div *ngIf="articulos.length == 0" class="text-center">
+  <div *ngIf="!obtenerArticulos()" class="text-center">
     <h1>No tiene articulos en el carrito</h1>
     <i class="fas fa-shopping-basket fa-6x"></i>
   </div>

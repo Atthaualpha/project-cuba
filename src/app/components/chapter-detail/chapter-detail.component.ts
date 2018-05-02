@@ -4,6 +4,7 @@ import { Article } from '../../models/articles/article';
 import { ArticleService } from '../../services/articles/article.service';
 import { ActivatedRoute } from '@angular/router';
 import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component';
+import { ShoppingService } from '../../services/shopping/shopping.service';
 
 @Component({
   selector: 'app-chapter-detail',
@@ -11,15 +12,15 @@ import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component'
   styleUrls: ['./chapter-detail.component.css']
 })
 export class ChapterDetailComponent implements OnInit {
-
   private subcription: ISubscription;
   articles: Article[];
   articulo: Article;
 
-
-  constructor(private route: ActivatedRoute,
-              private articleService: ArticleService,
-            private shoppingComponent: ShoppingCartComponent) {}
+  constructor(
+    private route: ActivatedRoute,
+    private articleService: ArticleService,
+    public shoppingService: ShoppingService
+  ) {}
 
   ngOnInit() {
     this.buscarArticulosPorCapitulo();
@@ -27,8 +28,9 @@ export class ChapterDetailComponent implements OnInit {
 
   buscarArticulosPorCapitulo() {
     const idChapter = this.route.snapshot.paramMap.get('id');
-    this.articleService.buscarArticulosPorCapitulo(Number(idChapter)).
-    subscribe(articulos => (this.articles = articulos));
+    this.articleService
+      .buscarArticulosPorCapitulo(Number(idChapter))
+      .subscribe(articulos => (this.articles = articulos));
   }
 
   seleccionarArticulo(art: Article) {
@@ -36,6 +38,6 @@ export class ChapterDetailComponent implements OnInit {
   }
 
   adicionarArticulo() {
-    this.shoppingComponent.adicionarArticulos(this.articulo);
+    this.shoppingService.agregarArticulo(this.articulo);
   }
 }

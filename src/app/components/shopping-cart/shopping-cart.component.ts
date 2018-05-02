@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Article } from '../../models/articles/article';
-
+import { ShoppingService } from '../../services/shopping/shopping.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -8,17 +9,20 @@ import { Article } from '../../models/articles/article';
   styleUrls: ['./shopping-cart.component.css']
 })
 export class ShoppingCartComponent implements OnInit {
-
-  constructor() { }
-
-
-  articulos: Article[] = [];
+  constructor(
+    public shoppingService: ShoppingService,
+    private location: Location
+  ) {}
 
   ngOnInit() {
+    this.obtenerArticulos();
   }
 
-  adicionarArticulos(articulo: Article) {
-    this.articulos.push(articulo);
+  obtenerArticulos(): Article[] {
+    return this.shoppingService.obtenerArticulo();
   }
 
+  volverAtras() {
+    this.location.back();
+  }
 }

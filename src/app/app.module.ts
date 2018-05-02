@@ -14,6 +14,8 @@ import { ArticleService } from './services/articles/article.service';
 import { AppRouter } from './app.router';
 import {SpinnerModule} from 'primeng/spinner';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { ShoppingService } from './services/shopping/shopping.service';
+import { Ng2Webstorage } from 'ngx-webstorage';
 
 @NgModule({
   declarations: [
@@ -29,9 +31,10 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
     HttpClientModule,
     FormsModule,
     AppRouter,
-    SpinnerModule
+    SpinnerModule,
+    Ng2Webstorage
   ],
-  providers: [ChapterService, ArticleService, ShoppingCartComponent
+  providers: [ChapterService, ArticleService, ShoppingService
   ],
   bootstrap: [AppComponent]
 })
