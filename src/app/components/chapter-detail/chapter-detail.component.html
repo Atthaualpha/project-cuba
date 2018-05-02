@@ -41,14 +41,24 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <label>Ingrese la cantidad que desea llegar</label>
-        <p-spinner [min]="0" size="10"></p-spinner>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary"  data-dismiss="modal" [routerLink]="['/shopping']" routerLinkActive="router-link-active"  (click)="adicionarArticulo()">Adicionar</button>
-      </div>
+      <form [formGroup]="validateArticle" #formArt="ngForm">
+        <div class="modal-body">
+          <label>Ingrese la cantidad que desea llegar</label>
+          <div class="text-center">
+            <div class="form-group">
+              <p-message severity="error" text="Ha superado la cantidad" *ngIf="cantidadArt > 0 && validateArticle.controls['cantidad'].invalid && validateArticle.controls['cantidad'].dirty"></p-message>
+              <p-message severity="error" text="Valor requerido" *ngIf="cantidadArt === null && validateArticle.controls['cantidad'].invalid && validateArticle.controls['cantidad'].dirty"></p-message>
+              <p-message severity="error" text="No debe ser cero" *ngIf="validateArticle.controls['cantidad'].invalid && validateArticle.controls['cantidad'].dirty && cantidadArt == 0"></p-message>
+            </div>
+            <p-spinner [min]="0" size="5" [(ngModel)]="cantidadArt" formControlName="cantidad" required></p-spinner>
+          </div>
+        </div>
+        <div class="modal-footer text-center">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" [disabled]="validateArticle.invalid" [routerLink]="['/shopping']"
+            (click)="adicionarArticulo()">Adicionar</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>

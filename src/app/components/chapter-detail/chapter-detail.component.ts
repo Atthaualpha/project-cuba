@@ -5,6 +5,7 @@ import { ArticleService } from '../../services/articles/article.service';
 import { ActivatedRoute } from '@angular/router';
 import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component';
 import { ShoppingService } from '../../services/shopping/shopping.service';
+import { FormGroup, FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-chapter-detail',
@@ -16,6 +17,9 @@ export class ChapterDetailComponent implements OnInit {
   articles: Article[];
   articulo: Article;
 
+  cantidadArt: number;
+  validateArticle: FormGroup;
+
   constructor(
     private route: ActivatedRoute,
     private articleService: ArticleService,
@@ -24,7 +28,12 @@ export class ChapterDetailComponent implements OnInit {
 
   ngOnInit() {
     this.buscarArticulosPorCapitulo();
+    this.validateArticle = new FormGroup({
+      'cantidad': new FormControl(this.cantidadArt, [Validators.required, validarCantidad])
+    });
   }
+
+
 
   buscarArticulosPorCapitulo() {
     const idChapter = this.route.snapshot.paramMap.get('id');
@@ -40,4 +49,31 @@ export class ChapterDetailComponent implements OnInit {
   adicionarArticulo() {
     this.shoppingService.agregarArticulo(this.articulo);
   }
+}
+
+function validarCantidad(control: FormControl) {
+  const cantidad = control.value;
+  if (cantidad > 5 || cantidad === 0) {
+    return {
+      errorcant: {
+        invalid: cantidad
+      }
+    };
+  }
+  return null;
+}
+
+function emailDomainValidator(control: FormControl) {
+  const email = control.value;
+  if (email && email.indexOf('@') !== -1) {
+    const [_, domain] = email.split('@');
+    if (domain !== 'codecraft.tv') {
+      return {
+        emailDomain: {
+          parsedDomain: domain
+        }
+      };
+    }
+  }
+  return null;
 }
