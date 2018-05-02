@@ -1,5 +1,6 @@
-<div class="lightSpeedIn animated">
-  <button router-link="home">Volver</button>
+<div class="pulse animated">
+  <a href="#" routerLink="/home" style="font-size: 25px;">
+    <i class="fas fa-arrow-circle-left"></i> Capitulos</a>
   <h1 class="text-center">Articulos</h1>
   <table class="table table-hover table-striped">
     <thead class="thead-dark">
@@ -16,38 +17,37 @@
       <tr *ngFor="let artl of articles">
         <th scope="row">{{ artl.idArticulo }}</th>
         <td>{{ artl.nombre }}</td>
-        <td class="text-center">{{ artl.unidadMedida }}</td>
-        <td class="text-center">{{ artl.cantidadMax }}</td>
-        <td class="text-center">{{ artl.valoracion }}</td>
-        <td class="text-center">
-          <button style="background-color: transparent; border: none;">
-            <img style="width: 35px;" src="http://www.iconesbr.net/iconesbr/2009/07/8390/8390_256x256.png" data-toggle="modal" data-target="#modal-add-article"
-            />
+        <td>{{ artl.unidadMedida }}</td>
+        <td>{{ artl.cantidadMax }}</td>
+        <td>{{ artl.valoracion }}</td>
+        <td>
+          <button style="background-color: transparent; border: none; cursor: pointer;" (click)="seleccionarArticulo(artl)" data-toggle="modal"
+            data-target="#modal-add-article">
+            <i class="fas fa-cart-arrow-down fa-2x"></i>
           </button>
         </td>
       </tr>
     </tbody>
   </table>
+</div>
 
-
-  <!-- Modal -->
-  <div class="modal fade" id="modal-add-article" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Adicionar</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <label>Ingrese la cantidad que desea comprar</label>
-          <input>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
+<!-- Modal -->
+<div class="modal fade" id="modal-add-article" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Adicionar</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label>Ingrese la cantidad que desea llegar</label>
+        <p-spinner [min]="0" size="10"></p-spinner>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary"  data-dismiss="modal" [routerLink]="['/shopping']" routerLinkActive="router-link-active"  (click)="adicionarArticulo()">Adicionar</button>
       </div>
     </div>
   </div>

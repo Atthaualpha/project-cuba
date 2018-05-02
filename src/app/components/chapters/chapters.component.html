@@ -1,4 +1,4 @@
-<div class="bounce animated">
+<div class="pulse animated">
   <h1 class="text-center">Capitulos</h1>
   <div class="row">
     <div class="col-lg-4 col-sm-6 portfolio-item" *ngFor="let c of chapters">
@@ -8,7 +8,7 @@
         </a>
         <div class="card-body">
           <h4 class="card-title">
-            <a href="#" routerLink="/articulos/{{c.idCapitulo}}"  (click)="buscarArticulos(c.idCapitulo)" data-toggle="modal">{{c.nombre}} </a>
+            <a href="#" routerLink="/articulos/{{c.idCapitulo}}"  (click)="buscarArticulos(c.idCapitulo)">{{c.nombre}} </a>
           </h4>
         </div>
       </div>

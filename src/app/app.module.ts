@@ -12,6 +12,8 @@ import { NavigationBarComponent } from './components/navigation-bar/navigation-b
 import { ChapterService } from './services/chapters/chapter.service';
 import { ArticleService } from './services/articles/article.service';
 import { AppRouter } from './app.router';
+import {SpinnerModule} from 'primeng/spinner';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 
 @NgModule({
   declarations: [
@@ -19,15 +21,17 @@ import { AppRouter } from './app.router';
     ChaptersComponent,
     ChapterDetailComponent,
     FreqAskComponent,
-    NavigationBarComponent
+    NavigationBarComponent,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    AppRouter
+    AppRouter,
+    SpinnerModule
   ],
-  providers: [ChapterService, ArticleService
+  providers: [ChapterService, ArticleService, ShoppingCartComponent
   ],
   bootstrap: [AppComponent]
 })

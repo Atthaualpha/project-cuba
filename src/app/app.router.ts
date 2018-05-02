@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { ChapterDetailComponent } from './components/chapter-detail/chapter-detail.component';
 import { ChaptersComponent } from './components/chapters/chapters.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 
 export const routes: Routes = [
   {
@@ -17,7 +18,11 @@ export const routes: Routes = [
   {
     path: 'articulos/:id',
     component: ChapterDetailComponent
-  }
+  },
+  {
+    path: 'shopping',
+    component: ShoppingCartComponent
+  },
 ];
 
 @NgModule({
