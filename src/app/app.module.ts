@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -12,10 +13,11 @@ import { NavigationBarComponent } from './components/navigation-bar/navigation-b
 import { ChapterService } from './services/chapters/chapter.service';
 import { ArticleService } from './services/articles/article.service';
 import { AppRouter } from './app.router';
-import {SpinnerModule, MessageModule, MessagesModule} from 'primeng/primeng';
+import {SpinnerModule, MessageModule, DialogModule, ButtonModule, InputTextModule} from 'primeng/primeng';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { ShoppingService } from './services/shopping/shopping.service';
 import { Ng2Webstorage } from 'ngx-webstorage';
+import { PanelAddArticleComponent } from './components/panel-add-article/panel-add-article.component';
 
 @NgModule({
   declarations: [
@@ -24,18 +26,23 @@ import { Ng2Webstorage } from 'ngx-webstorage';
     ChapterDetailComponent,
     FreqAskComponent,
     NavigationBarComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    PanelAddArticleComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
+    BrowserAnimationsModule,
     FormsModule,
-    ReactiveFormsModule,
+    DialogModule,
+    HttpClientModule,
     AppRouter,
     SpinnerModule,
     Ng2Webstorage,
     MessageModule,
-    MessagesModule
+    ReactiveFormsModule,
+    ButtonModule,
+    InputTextModule
+
   ],
   providers: [ChapterService, ArticleService, ShoppingService
   ],

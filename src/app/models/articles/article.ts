@@ -1,5 +1,4 @@
 export class Article {
-
   idCapitulo: number;
   idArticulo: number;
   nombre: string;
@@ -7,5 +6,9 @@ export class Article {
   cantidadMax: number;
   observacion: string;
   valoracion: number;
+  cantidadActual: number;
 
+  Article() {
+    this.cantidadActual = 0;
+  }
 }

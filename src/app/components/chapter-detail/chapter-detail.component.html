@@ -30,35 +30,3 @@
     </tbody>
   </table>
 </div>
-
-<!-- Modal -->
-<div class="modal fade" id="modal-add-article" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Adicionar</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <form [formGroup]="validateArticle" #formArt="ngForm">
-        <div class="modal-body">
-          <label>Ingrese la cantidad que desea llegar</label>
-          <div class="text-center">
-            <div class="form-group">
-              <p-message severity="error" text="Ha superado la cantidad" *ngIf="cantidadArt > 0 && validateArticle.controls['cantidad'].invalid && validateArticle.controls['cantidad'].dirty"></p-message>
-              <p-message severity="error" text="Valor requerido" *ngIf="cantidadArt === null && validateArticle.controls['cantidad'].invalid && validateArticle.controls['cantidad'].dirty"></p-message>
-              <p-message severity="error" text="No debe ser cero" *ngIf="validateArticle.controls['cantidad'].invalid && validateArticle.controls['cantidad'].dirty && cantidadArt == 0"></p-message>
-            </div>
-            <p-spinner [min]="0" size="5" [(ngModel)]="cantidadArt" formControlName="cantidad" required></p-spinner>
-          </div>
-        </div>
-        <div class="modal-footer text-center">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" [disabled]="validateArticle.invalid" [routerLink]="['/shopping']"
-            (click)="adicionarArticulo()">Adicionar</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>

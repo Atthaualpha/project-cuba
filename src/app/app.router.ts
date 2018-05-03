@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { ChapterDetailComponent } from './components/chapter-detail/chapter-detail.component';
 import { ChaptersComponent } from './components/chapters/chapters.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { PanelAddArticleComponent } from './components/panel-add-article/panel-add-article.component';
 
 export const routes: Routes = [
   {
@@ -22,6 +23,10 @@ export const routes: Routes = [
   {
     path: 'shopping',
     component: ShoppingCartComponent
+  },
+  {
+    path: 'addArticle',
+    component: PanelAddArticleComponent
   },
 ];
 
