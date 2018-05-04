@@ -1,12 +1,14 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { Article } from '../../models/articles/article';
 import {
   FormGroup,
   FormControl,
   ValidatorFn,
-  AbstractControl
+  AbstractControl,
+  Validators
 } from '@angular/forms';
 import { ShoppingService } from '../../services/shopping/shopping.service';
+import { PanelAddArticleService } from '../../services/panelAdd/panel-add-article.service';
 
 @Component({
   selector: 'app-panel-add-article',
@@ -14,12 +16,13 @@ import { ShoppingService } from '../../services/shopping/shopping.service';
   styleUrls: ['./panel-add-article.component.css']
 })
 export class PanelAddArticleComponent implements OnInit {
-
-  displayPanelAdd: boolean;
   articulo: Article;
   validateArticle: FormGroup;
 
-  constructor(private shoppingService: ShoppingService) {}
+  constructor(
+    private shoppingService: ShoppingService,
+    public panelAddArticle: PanelAddArticleService
+  ) {}
 
   ngOnInit() {}
 
@@ -46,22 +49,18 @@ export class PanelAddArticleComponent implements OnInit {
 
   @Input()
   set openPanelAdd(art: Article) {
-    console.log('entro');
-    this.displayPanelAdd = true;
     this.articulo = art;
-    const articuloShop = this.shoppingService.obtenerArticulo(
-      art.idCapitulo,
-      art.idArticulo
-    );
-    if (articuloShop) {
-      this.articulo.cantidadActual = articuloShop.cantidadActual;
-    } else {
-      this.articulo.cantidadActual = 0;
+    if (this.articulo !== undefined) {
+      const articuloShop = this.shoppingService.obtenerArticulo(
+        this.articulo.idCapitulo,
+        this.articulo.idArticulo
+      );
+      if (articuloShop) {
+        this.articulo.cantidadActual = articuloShop.cantidadActual;
+      } else {
+        this.articulo.cantidadActual = 0;
+      }
     }
     this.crearFormValidator();
-  }
-
-  closePanelAdd() {
-    this.displayPanelAdd = false;
   }
 }

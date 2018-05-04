@@ -12,18 +12,26 @@ export class ShoppingService {
 
   constructor() {}
 
+  validarListaArticulos() {
+    if (!this.articulos) {
+      this.articulos = [];
+    }
+  }
+
   /**
    * @description agrega un nuevo articulo al carrito
    * @param articulo
    */
   agregarArticulo(articulo: Article) {
-    if (!this.articulos) {
-      this.articulos = [];
-    }
+    this.validarListaArticulos();
     this.validarExistenciaArticulo(articulo);
     this.articulos = this.articulos;
   }
 
+  /**
+   * @description valida la existenia de un articulo, si existe lo actualiza, si no lo crea
+   * @param articulo
+   */
   validarExistenciaArticulo(articulo: Article) {
     const indiceArticuloShop = this.obtenerIndiceArticulo(
       articulo.idCapitulo,
@@ -56,14 +64,32 @@ export class ShoppingService {
    * @param art @
    */
   obtenerArticulo(idCap: number, idArt: number): Article {
+    this.validarListaArticulos();
     return this.articulos.find(function(art) {
       return art.idCapitulo === idCap && art.idArticulo === idArt;
     });
   }
 
+  /**
+   *
+   * @returns devuelve el indice de un articulo especifico
+   * @description busca un articulo especifico dentro de la lista
+   * @param idCap
+   * @param idArt
+   */
   obtenerIndiceArticulo(idCap: number, idArt: number): number {
+    this.validarListaArticulos();
     return this.articulos.findIndex(function(art, index) {
       return art.idCapitulo === idCap && art.idArticulo === idArt;
     });
+  }
+
+  calcularTotalValoracion(): number {
+    this.validarListaArticulos();
+    let totalValoracion = 0;
+    this.articulos.forEach(function(articulo) {
+      totalValoracion += articulo.valoracion * articulo.cantidadActual;
+    });
+    return totalValoracion;
   }
 }

@@ -1,4 +1,4 @@
-<p-dialog [(visible)]="displayPanelAdd" [modal]="true" [responsive]="true" [width]="420" [minWidth]="250">
+<p-dialog [(visible)]="panelAddArticle.getDisplay" [modal]="true" [responsive]="true" [width]="420" [minWidth]="250" (onHide)="panelAddArticle.closePanelAddArticle()">
   <p-header>
     Adicionar Articulo
   </p-header>
@@ -33,7 +33,7 @@
     </div>
   </form>
   <p-footer>
-    <button type="button" class="btn btn-danger" (click)="closePanelAdd()">Cerrar</button>
+    <button type="button" class="btn btn-danger" (click)="panelAddArticle.closePanelAddArticle()">Cerrar</button>
     <button type="button" class="btn btn-primary" [disabled]="validateArticle.invalid" [routerLink]="['/shopping']" (click)="adicionarArticulo()">Guardar</button>
   </p-footer>
 

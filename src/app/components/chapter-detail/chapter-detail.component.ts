@@ -13,6 +13,7 @@ import {
   ValidationErrors,
   AbstractControl
 } from '@angular/forms';
+import { PanelAddArticleService } from '../../services/panelAdd/panel-add-article.service';
 
 @Component({
   selector: 'app-chapter-detail',
@@ -23,10 +24,12 @@ export class ChapterDetailComponent implements OnInit {
   private subcription: ISubscription;
   articles: Article[];
   articuloSeleccionado: Article;
+  openModal: boolean;
 
   constructor(
     private route: ActivatedRoute,
-    private articleService: ArticleService
+    private articleService: ArticleService,
+    private panelAddArticle: PanelAddArticleService
   ) {}
 
   ngOnInit() {
@@ -42,5 +45,6 @@ export class ChapterDetailComponent implements OnInit {
 
   seleccionarArticulo(art: Article) {
     this.articuloSeleccionado = art;
+    this.panelAddArticle.openPanelAddArticle();
   }
 }

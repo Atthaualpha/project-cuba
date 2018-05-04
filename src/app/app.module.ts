@@ -13,11 +13,12 @@ import { NavigationBarComponent } from './components/navigation-bar/navigation-b
 import { ChapterService } from './services/chapters/chapter.service';
 import { ArticleService } from './services/articles/article.service';
 import { AppRouter } from './app.router';
-import {SpinnerModule, MessageModule, DialogModule, ButtonModule, InputTextModule} from 'primeng/primeng';
+import {SpinnerModule, MessageModule, DialogModule, ButtonModule, InputTextModule, TooltipModule} from 'primeng/primeng';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { ShoppingService } from './services/shopping/shopping.service';
 import { Ng2Webstorage } from 'ngx-webstorage';
 import { PanelAddArticleComponent } from './components/panel-add-article/panel-add-article.component';
+import { PanelAddArticleService } from './services/panelAdd/panel-add-article.service';
 
 @NgModule({
   declarations: [
@@ -41,10 +42,11 @@ import { PanelAddArticleComponent } from './components/panel-add-article/panel-a
     MessageModule,
     ReactiveFormsModule,
     ButtonModule,
-    InputTextModule
+    InputTextModule,
+    TooltipModule
 
   ],
-  providers: [ChapterService, ArticleService, ShoppingService
+  providers: [ChapterService, ArticleService, ShoppingService, PanelAddArticleService
   ],
   bootstrap: [AppComponent]
 })

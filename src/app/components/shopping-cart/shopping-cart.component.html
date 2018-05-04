@@ -9,10 +9,11 @@
           <th scope="col">#</th>
           <th scope="col">Nombre</th>
           <th scope="col">Unidad</th>
-          <th scope="col">Cantidad Max</th>
+          <th scope="col" class="text-center">Cantidad Max</th>
           <th scope="col">Valoración</th>
-          <th scope="col">Cantidad actual</th>
-          <th scope="col">Adicionar</th>
+          <th scope="col" class="text-center">Cantidad Actual</th>
+          <th scope="col">Editar</th>
+          <th scope="col">Eliminar</th>
         </tr>
       </thead>
       <tbody>
@@ -20,9 +21,12 @@
           <th scope="row">{{ artl.idArticulo }}</th>
           <td>{{ artl.nombre }}</td>
           <td>{{ artl.unidadMedida }}</td>
-          <td>{{ artl.cantidadMax }}</td>
-          <td>{{ artl.valoracion }}</td>
-          <td><p-spinner [(ngModel)]="artl.cantidadActual" [size]="1" [max]="artl.cantidadMax" [min]="0"></p-spinner></td>
+          <td class="text-center">{{ artl.cantidadMax }}</td>
+          <td class="text-center">{{ artl.valoracion }}</td>
+          <td class="text-center">{{ artl.cantidadActual }}</td>
+          <td class="text-center">
+            <p-button styleClass="ui-button-info" pTooltip="Editar" icon="fa fa-edit" (onClick)="seleccionarArticulo(artl)"></p-button>
+          </td>
           <td>
             <button style="background-color: transparent; border: none; cursor: pointer; color: #be0000" (click)="eliminarArticulo(artl)">
               <i class="fas fa-times fa-2x"></i>
@@ -30,6 +34,18 @@
           </td>
         </tr>
       </tbody>
+      <tfoot>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <th scope="col">Total articulos</th>
+          <td></td>
+          <th scope="col">Valoración Total</th>
+          <td scope="col">{{totalValoracion}} pts.</td>
+        </tr>
+      </tfoot>
     </table>
   </div>
   <ng-template #vacio>
@@ -38,5 +54,5 @@
       <i class="fas fa-shopping-basket fa-6x"></i>
     </div>
   </ng-template>
-
 </div>
+<app-panel-add-article *ngIf="articuloSeleccionado" [openPanelAdd]="articuloSeleccionado"></app-panel-add-article>
