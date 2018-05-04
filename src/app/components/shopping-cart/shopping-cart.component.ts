@@ -19,7 +19,7 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   obtenerArticulos(): Article[] {
-    return this.shoppingService.obtenerArticulo();
+    return this.shoppingService.obtenerArticulos();
   }
 
   volverAtras() {

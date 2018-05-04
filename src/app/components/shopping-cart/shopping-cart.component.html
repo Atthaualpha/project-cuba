@@ -9,8 +9,9 @@
           <th scope="col">#</th>
           <th scope="col">Nombre</th>
           <th scope="col">Unidad</th>
-          <th scope="col">Cantidad</th>
+          <th scope="col">Cantidad Max</th>
           <th scope="col">Valoración</th>
+          <th scope="col">Cantidad actual</th>
           <th scope="col">Adicionar</th>
         </tr>
       </thead>
@@ -21,6 +22,7 @@
           <td>{{ artl.unidadMedida }}</td>
           <td>{{ artl.cantidadMax }}</td>
           <td>{{ artl.valoracion }}</td>
+          <td><p-spinner [(ngModel)]="artl.cantidadActual" [size]="1" [max]="artl.cantidadMax" [min]="0"></p-spinner></td>
           <td>
             <button style="background-color: transparent; border: none; cursor: pointer; color: #be0000" (click)="eliminarArticulo(artl)">
               <i class="fas fa-times fa-2x"></i>

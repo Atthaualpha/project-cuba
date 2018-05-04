@@ -21,8 +21,7 @@
         <td>{{ artl.cantidadMax }}</td>
         <td>{{ artl.valoracion }}</td>
         <td>
-          <button style="background-color: transparent; border: none; cursor: pointer;" (click)="seleccionarArticulo(artl)" data-toggle="modal"
-            data-target="#modal-add-article">
+          <button style="background-color: transparent; border: none; cursor: pointer;" (click)="seleccionarArticulo(artl)">
             <i class="fas fa-cart-arrow-down fa-2x"></i>
           </button>
         </td>
@@ -30,3 +29,4 @@
     </tbody>
   </table>
 </div>
+<app-panel-add-article *ngIf="articuloSeleccionado" [openPanelAdd]="articuloSeleccionado"></app-panel-add-article>

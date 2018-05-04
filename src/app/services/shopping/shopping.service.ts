@@ -20,8 +20,20 @@ export class ShoppingService {
     if (!this.articulos) {
       this.articulos = [];
     }
-    this.articulos.push(articulo);
+    this.validarExistenciaArticulo(articulo);
     this.articulos = this.articulos;
+  }
+
+  validarExistenciaArticulo(articulo: Article) {
+    const indiceArticuloShop = this.obtenerIndiceArticulo(
+      articulo.idCapitulo,
+      articulo.idArticulo
+    );
+    if (indiceArticuloShop !== -1) {
+      this.articulos[indiceArticuloShop] = articulo;
+    } else {
+      this.articulos.push(articulo);
+    }
   }
 
   /**
@@ -35,7 +47,23 @@ export class ShoppingService {
   /**
    * @description devuelve la lista de articulos del carrito
    */
-  obtenerArticulo(): Article[] {
+  obtenerArticulos(): Article[] {
     return this.articulos;
+  }
+
+  /**
+   * @description devuelve un articulo especifico
+   * @param art @
+   */
+  obtenerArticulo(idCap: number, idArt: number): Article {
+    return this.articulos.find(function(art) {
+      return art.idCapitulo === idCap && art.idArticulo === idArt;
+    });
+  }
+
+  obtenerIndiceArticulo(idCap: number, idArt: number): number {
+    return this.articulos.findIndex(function(art, index) {
+      return art.idCapitulo === idCap && art.idArticulo === idArt;
+    });
   }
 }

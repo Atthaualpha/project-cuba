@@ -22,7 +22,7 @@ import {
 export class ChapterDetailComponent implements OnInit {
   private subcription: ISubscription;
   articles: Article[];
-  articulo: Article;
+  articuloSeleccionado: Article;
 
   constructor(
     private route: ActivatedRoute,
@@ -40,5 +40,7 @@ export class ChapterDetailComponent implements OnInit {
       .subscribe(articulos => (this.articles = articulos));
   }
 
-  seleccionarArticulo(art: Article) {}
+  seleccionarArticulo(art: Article) {
+    this.articuloSeleccionado = art;
+  }
 }

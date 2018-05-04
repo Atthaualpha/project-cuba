@@ -7,8 +7,4 @@ export class Article {
   observacion: string;
   valoracion: number;
   cantidadActual: number;
-
-  Article() {
-    this.cantidadActual = 0;
-  }
 }

@@ -1,54 +1,40 @@
-<!-- <div class="modal fade" *ngIf='validateArticle' id="modal-add-article" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Adicionar Articulo</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+<p-dialog [(visible)]="displayPanelAdd" [modal]="true" [responsive]="true" [width]="420" [minWidth]="250">
+  <p-header>
+    Adicionar Articulo
+  </p-header>
+  <form [formGroup]="validateArticle" #formArt="ngForm">
+    <div class="text-center">
+      <label>Ingrese la cantidad que desea llevar</label>
+      <div>
+        <p-spinner [max]="articulo.cantidadMax" [min]="0" size="5" [(ngModel)]="articulo.cantidadActual" formControlName="cantidad"
+          required></p-spinner>
       </div>
-      <form [formGroup]="validateArticle" #formArt="ngForm">
-        <div class="modal-body">
-          <label>Ingrese la cantidad que desea llevar</label>
-          <div class="text-center">
-            <p-spinner [max]="articulo.cantidadMax" [min]="0" size="5" [(ngModel)]="articulo.cantidadActual" formControlName="cantidad" required></p-spinner>
-          </div>
-        </div>
-        <div class="container-fluid">
-          <div class="row align-items-center border-top">
-            <div class="col-md-6 text-center border-right">
-              <p>Cantidad Disponible</p>
-            </div>
-            <div class="col-md-6 text-center border-left">
-              <p>Cantidad Actual</p>
-            </div>
-            <div class="col-md-6 text-center border-right">
-              <label class="border rounded border-white w-25 text-white" [ngClass]="((articulo.cantidadMax - articulo.cantidadActual) > articulo.cantidadMax) ? 'bg-danger': 'bg-success' " style="box-shadow: 1px 2px #888888;">{{ (articulo.cantidadMax - articulo.cantidadActual) }}</label>
-            </div>
-            <div class="col-md-6 text-center border-left">
-              <label class="border rounded border-white w-25 text-white" [ngClass]="((articulo.cantidadMax - articulo.cantidadActual) > articulo.cantidadMax) ? 'bg-danger': 'bg-primary' " style="background-color: #d6d8d9; box-shadow: 1px 2px #888888;">{{ articulo.cantidadActual }}</label>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer text-center">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" [disabled]="validateArticle.invalid" [routerLink]="['/shopping']"
-            (click)="adicionarArticulo()">Adicionar</button>
-        </div>
-      </form>
     </div>
-  </div>
-</div> -->
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center border-right">
+          <p>Cantidad Disponible</p>
+          <div class="row">
+            <div class="col-12">
+              <label class="border rounded border-white w-25 text-white" [ngClass]="((articulo.cantidadMax - articulo.cantidadActual) > articulo.cantidadMax) ? 'bg-danger': 'bg-success' "
+                style="box-shadow: 1px 2px #888888;">{{ (articulo.cantidadMax - articulo.cantidadActual) }}</label>
+                <span> de </span>
+                <label class="border rounded border-white w-25 text-white bg-info"
+                    style="box-shadow: 1px 2px #888888;">{{ articulo.cantidadMax }}</label>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 text-center border-left">
+          <p>Cantidad Actual</p>
+          <label class="border rounded border-white w-25 text-white" [ngClass]="((articulo.cantidadMax - articulo.cantidadActual) > articulo.cantidadMax) ? 'bg-danger': 'bg-primary' "
+            style="background-color: #d6d8d9; box-shadow: 1px 2px #888888;">{{ articulo.cantidadActual }}</label>
+        </div>
+      </div>
+    </div>
+  </form>
+  <p-footer>
+    <button type="button" class="btn btn-danger" (click)="closePanelAdd()">Cerrar</button>
+    <button type="button" class="btn btn-primary" [disabled]="validateArticle.invalid" [routerLink]="['/shopping']" (click)="adicionarArticulo()">Guardar</button>
+  </p-footer>
 
-<p-dialog header="Godfather I" [visible]="true" [modal]="true" [responsive]="true" [width]="350" [minWidth]="200" [minY]="70">
-    <span>The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding.
-        His beloved son Michael has just come home from the war, but does not intend to become part of his father's business.
-        Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family,
-        kind and benevolent to those who give respect,
-        but given to ruthless violence whenever anything stands against the good of the family.</span>
-        <p-footer>
-            <button type="button" pButton icon="fas fa-check"  label="Yes"></button>
-            <button type="button" pButton icon="fas fa-close" label="No"></button>
-        </p-footer>
 </p-dialog>

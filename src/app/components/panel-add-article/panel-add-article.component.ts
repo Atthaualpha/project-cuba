@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Article } from '../../models/articles/article';
 import {
   FormGroup,
@@ -15,16 +15,15 @@ import { ShoppingService } from '../../services/shopping/shopping.service';
 })
 export class PanelAddArticleComponent implements OnInit {
 
+  displayPanelAdd: boolean;
   articulo: Article;
   validateArticle: FormGroup;
 
-  constructor(public shoppingService: ShoppingService) {}
+  constructor(private shoppingService: ShoppingService) {}
 
-  ngOnInit() {
+  ngOnInit() {}
 
-  }
-
-  abrirModalAdicionar() {
+  crearFormValidator() {
     this.validateArticle = new FormGroup({
       cantidad: new FormControl('', [
         this.validarCantidades(this.articulo.cantidadMax)
@@ -43,5 +42,26 @@ export class PanelAddArticleComponent implements OnInit {
         return { invalid: true };
       }
     };
+  }
+
+  @Input()
+  set openPanelAdd(art: Article) {
+    console.log('entro');
+    this.displayPanelAdd = true;
+    this.articulo = art;
+    const articuloShop = this.shoppingService.obtenerArticulo(
+      art.idCapitulo,
+      art.idArticulo
+    );
+    if (articuloShop) {
+      this.articulo.cantidadActual = articuloShop.cantidadActual;
+    } else {
+      this.articulo.cantidadActual = 0;
+    }
+    this.crearFormValidator();
+  }
+
+  closePanelAdd() {
+    this.displayPanelAdd = false;
   }
 }
