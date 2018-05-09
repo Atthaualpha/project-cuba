@@ -19,7 +19,6 @@ import { MessagesEmitService } from '../../services/messages-emit/messages-emit.
 export class PanelAddArticleComponent implements OnInit {
   articulo: Article;
   validateArticle: FormGroup;
-  articuloTemp: Article;
 
   constructor(
     private shoppingService: ShoppingService,
@@ -27,18 +26,18 @@ export class PanelAddArticleComponent implements OnInit {
     private messageService: MessagesEmitService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.openPanelAdd();
+    this.crearFormValidator();
+  }
 
   crearFormValidator() {
     this.validateArticle = new FormGroup({
-      cantidad: new FormControl('', [
-        this.validarCantidades(this.articulo.cantidadMax)
-      ])
+      cantidad: new FormControl('', [this.validarCantidades(this.articulo.cantidadMax)])
     });
   }
 
   adicionarArticulo() {
-    this.articulo.cantidadActual = this.articuloTemp.cantidadActual;
     if (this.shoppingService.agregarArticulo(this.articulo)) {
       this.messageService.newGrowlMessage(
         'success',
@@ -49,7 +48,7 @@ export class PanelAddArticleComponent implements OnInit {
     } else {
       this.messageService.newGrowlMessage(
         'error',
-        'Valoración superada ' + this.shoppingService.obtenerValoracionTotal(),
+        'Valoración superada ',
         'La valoracion no puede ser mayor a 900 puntos'
       );
     }
@@ -71,22 +70,19 @@ export class PanelAddArticleComponent implements OnInit {
     };
   }
 
-  @Input()
-  set openPanelAdd(art: Article) {
-    this.articulo = art;
-    this.articuloTemp = new Article();
-    this.articuloTemp.cantidadMax = this.articulo.cantidadMax;
+  openPanelAdd() {
+    this.articulo = this.panelAddArticle.getArticulo;
+    this.articulo.cantidadMax = this.articulo.cantidadMax;
     if (this.articulo !== undefined) {
       const articuloShop = this.shoppingService.obtenerArticulo(
         this.articulo.idCapitulo,
         this.articulo.idArticulo
       );
       if (articuloShop) {
-        this.articuloTemp.cantidadActual = articuloShop.cantidadActual;
+        this.articulo.cantidadActual = articuloShop.cantidadActual;
       } else {
-        this.articuloTemp.cantidadActual = 0;
+        this.articulo.cantidadActual = 0;
       }
     }
-    this.crearFormValidator();
   }
 }

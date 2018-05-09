@@ -1,25 +1,27 @@
-<p-dialog [(visible)]="panelAddArticle.getDisplay" [modal]="true" [responsive]="true" [width]="420" [minWidth]="250" (onHide)="panelAddArticle.closePanelAddArticle()">
+<p-dialog [(visible)]="panelAddArticle.getDisplay" [modal]="true" [responsive]="true" [width]="420" [minWidth]="250"
+  (onHide)="panelAddArticle.closePanelAddArticle()">
   <p-header>
     Adicionar Articulo
   </p-header>
-  <form [formGroup]="validateArticle" #formArt="ngForm">
-    <div class="text-center">
-      <label>Ingrese la cantidad que desea llevar</label>
-      <div>
-        <p-spinner [max]="articuloTemp.cantidadMax" [min]="0" size="5" [(ngModel)]="articuloTemp.cantidadActual" formControlName="cantidad"
-          required></p-spinner>
+  <form [formGroup]="validateArticle" #formArt="ngForm" *ngIf="articulo">
+    <div *ngIf="articulo.cantidadMax">
+      <div class="text-center">
+        <label>Ingrese la cantidad que desea llevar</label>
+        <div>
+          <p-spinner [max]="articulo.cantidadMax" [min]="0" size="5" [(ngModel)]="articulo.cantidadActual" formControlName="cantidad"
+            required></p-spinner>
+        </div>
       </div>
-    </div>
-    <div class="container-fluid">
-      <div class="row align-items-center">
-        <div class="col-md-12 text-center">
-          <p>Cantidad Disponible</p>
-          <div class="row">
-            <div class="col-12">
-              <label class="border rounded border-white w-25 text-white bg-success"
-                style="box-shadow: 1px 2px #888888;">{{ (articuloTemp.cantidadMax - articuloTemp.cantidadActual) }}</label>
-              <span> de </span>
-              <label class="border rounded border-white w-25 text-white bg-info" style="box-shadow: 1px 2px #888888;">{{ articuloTemp.cantidadMax }}</label>
+      <div class="container-fluid">
+        <div class="row align-items-center">
+          <div class="col-md-12 text-center">
+            <p>Cantidad Disponible</p>
+            <div class="row">
+              <div class="col-12">
+                <label class="border rounded border-white w-25 text-white bg-success" style="box-shadow: 1px 2px #888888;">{{ (articulo.cantidadMax - articulo.cantidadActual) }}</label>
+                <span> de </span>
+                <label class="border rounded border-white w-25 text-white bg-info" style="box-shadow: 1px 2px #888888;">{{ articulo.cantidadMax }}</label>
+              </div>
             </div>
           </div>
         </div>

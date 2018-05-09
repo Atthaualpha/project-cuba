@@ -1,11 +1,2 @@
-<<<<<<< HEAD
-<div class="container-fluid">
-  <div class="row">
-    <p-messages [closable]="true" [(value)]="mensajes"></p-messages>
-    <p-growl [(value)]="mensajes" [sticky]="true" id="growlmsg"></p-growl>
-  </div>
-</div>
-=======
-<p-growl [(value)]="messageService.growlMessage" id="grmsg"></p-growl>
+<p-growl [(value)]="messageService.growlMessage" id="grmsg" [life]="3000"></p-growl>
 <p-messages [(value)]="messageService.message"></p-messages>
->>>>>>> 01197c45e2260e24f58e968b964a55f7a3725f26

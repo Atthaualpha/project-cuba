@@ -17,8 +17,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let artl of obtenerArticulos()">
-          <th scope="row">{{ artl.idArticulo }}</th>
+        <tr *ngFor="let artl of obtenerArticulos(); let idx = index;">
+          <th scope="row">{{ idx + 1 }}</th>
           <td>{{ artl.nombre }}</td>
           <td>{{ artl.unidadMedida }}</td>
           <td class="text-center">{{ artl.cantidadMax }}</td>
@@ -41,9 +41,9 @@
           <td></td>
           <td></td>
           <th scope="col">Total articulos</th>
-          <td></td>
+          <td scope="col" class="text-center">{{shoppingService.calcularTotalArticulos}}</td>
           <th scope="col">Valoración Total</th>
-          <td scope="col">{{totalValoracion}} pts.</td>
+          <td scope="col">{{shoppingService.obtenerValoracionTotal}} pts.</td>
         </tr>
       </tfoot>
     </table>
@@ -55,4 +55,4 @@
     </div>
   </ng-template>
 </div>
-<app-panel-add-article *ngIf="articuloSeleccionado" [openPanelAdd]="articuloSeleccionado"></app-panel-add-article>
+<app-panel-add-article *ngIf="panelAddArticle.getDisplay == true"></app-panel-add-article>

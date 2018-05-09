@@ -42,6 +42,7 @@ export class ShoppingService {
       } else {
         this.articulos.push(articulo);
       }
+      this.valoracionTotal = this.valoracionTotal;
       this.articulos = this.articulos;
       return true;
     } else {
@@ -61,15 +62,22 @@ export class ShoppingService {
     cantidadAnterior: number
   ): boolean {
     if (cantidadActual > cantidadAnterior) {
-      let valoracion = (this.valoracionTotal ? this.valoracionTotal : this.calcularTotalValoracion());
+      let valoracion = this.valoracionTotal
+        ? this.valoracionTotal
+        : this.calcularTotalValoracion();
       valoracion += (cantidadActual - cantidadAnterior) * valoracionActual;
       if (valoracion > 900) {
         return true;
       } else {
         this.valoracionTotal = valoracion;
-        this.valoracionTotal = this.valoracionTotal;
         return false;
       }
+    } else {
+      let valoracion = this.valoracionTotal
+        ? this.valoracionTotal
+        : this.calcularTotalValoracion();
+      valoracion -= (cantidadAnterior - cantidadActual) * valoracionActual;
+      this.valoracionTotal = valoracion;
     }
   }
 
@@ -158,10 +166,9 @@ export class ShoppingService {
   /**
    * @description devuelve la valoracion total actual
    */
-  obtenerValoracionTotal(): number {
-    return (this.valoracionTotal ? this.valoracionTotal : 0);
+  get obtenerValoracionTotal(): number {
+    return this.valoracionTotal ? this.valoracionTotal : 0;
   }
-
 
   /**
    * @description obtiene un articulo de acuerdo al indice
@@ -183,5 +190,14 @@ export class ShoppingService {
       this.eliminarArticuloPorIndice(indiceArticulo);
     }
     this.articulos = this.articulos;
+  }
+
+  get calcularTotalArticulos(): number {
+    this.validarListaArticulos();
+    let totalArticulos = 0;
+    this.articulos.forEach(function(articulo) {
+      totalArticulos += articulo.cantidadActual;
+    });
+    return totalArticulos;
   }
 }

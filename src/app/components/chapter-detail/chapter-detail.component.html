@@ -29,4 +29,4 @@
     </tbody>
   </table>
 </div>
-<app-panel-add-article [openPanelAdd]="articuloSeleccionado" *ngIf="articuloSeleccionado"></app-panel-add-article>
+<app-panel-add-article *ngIf="panelAddArticle.getDisplay == true"></app-panel-add-article>

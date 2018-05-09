@@ -29,7 +29,7 @@ export class ChapterDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private articleService: ArticleService,
-    private panelAddArticle: PanelAddArticleService
+    public panelAddArticle: PanelAddArticleService
   ) {}
 
   ngOnInit() {
@@ -44,7 +44,6 @@ export class ChapterDetailComponent implements OnInit {
   }
 
   seleccionarArticulo(art: Article) {
-    this.articuloSeleccionado = art;
-    this.panelAddArticle.openPanelAddArticle();
+    this.panelAddArticle.openPanelAddArticle(art);
   }
 }

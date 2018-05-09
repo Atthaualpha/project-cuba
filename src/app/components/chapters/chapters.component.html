@@ -4,7 +4,7 @@
     <div class="col-lg-4 col-sm-6 portfolio-item" *ngFor="let c of chapters">
       <div class="card h-100">
         <a href="#" routerLink="/articulos/{{c.idCapitulo}}" (click)="buscarArticulos(c.idCapitulo)"  >
-          <img class="card-img-top" src="http://placehold.it/700x400" alt="">
+          <img class="card-img-top" src="{{c.url}}" alt="">
         </a>
         <div class="card-body">
           <h4 class="card-title">

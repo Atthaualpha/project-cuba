@@ -11,19 +11,18 @@ import { MessagesEmitService } from '../../services/messages-emit/messages-emit.
   styleUrls: ['./shopping-cart.component.css']
 })
 export class ShoppingCartComponent implements OnInit {
-  totalValoracion: number;
   articuloSeleccionado: Article;
+  valoracionTotal: number;
 
   constructor(
-    private shoppingService: ShoppingService,
-    private panelAddArticle: PanelAddArticleService,
+    public shoppingService: ShoppingService,
+    public panelAddArticle: PanelAddArticleService,
     private location: Location,
     private messageService: MessagesEmitService
   ) {}
 
   ngOnInit() {
     this.obtenerArticulos();
-    this.totalValoracion = this.shoppingService.obtenerValoracionTotal();
   }
 
   obtenerArticulos(): Article[] {
@@ -40,7 +39,6 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   seleccionarArticulo(art: Article) {
-    this.articuloSeleccionado = art;
-    this.panelAddArticle.openPanelAddArticle();
+    this.panelAddArticle.openPanelAddArticle(art);
   }
 }
