@@ -29,6 +29,10 @@ import { Ng2Webstorage } from 'ngx-webstorage';
 import { PanelAddArticleComponent } from './components/panel-add-article/panel-add-article.component';
 import { PanelAddArticleService } from './services/panelAdd/panel-add-article.service';
 import { MessagesComponent } from './components/messages/messages.component';
+<<<<<<< HEAD
+=======
+import { MessagesEmitService } from './services/messages-emit/messages-emit.service';
+>>>>>>> 01197c45e2260e24f58e968b964a55f7a3725f26
 
 @NgModule({
   declarations: [
@@ -62,7 +66,12 @@ import { MessagesComponent } from './components/messages/messages.component';
     ChapterService,
     ArticleService,
     ShoppingService,
+<<<<<<< HEAD
     PanelAddArticleService
+=======
+    PanelAddArticleService,
+    MessagesEmitService
+>>>>>>> 01197c45e2260e24f58e968b964a55f7a3725f26
   ],
   bootstrap: [AppComponent]
 })

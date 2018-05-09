@@ -1,4 +1,4 @@
-<div class="pulse animated">
+<div class="fadeIn animated">
   <a (click)="volverAtras()" style="font-size: 25px; cursor: pointer;">
     <i class="fas fa-arrow-circle-left"></i> Volver</a>
   <div *ngIf="obtenerArticulos() && obtenerArticulos().length > 0; else vacio">
@@ -12,7 +12,7 @@
           <th scope="col" class="text-center">Cantidad Max</th>
           <th scope="col">Valoración</th>
           <th scope="col" class="text-center">Cantidad Actual</th>
-          <th scope="col">Editar</th>
+          <th scope="col" class="text-center">Editar</th>
           <th scope="col">Eliminar</th>
         </tr>
       </thead>
