@@ -35,7 +35,7 @@ export class ShoppingCartComponent implements OnInit {
 
   eliminarArticulo(articulo: Article) {
     this.shoppingService.eliminarArticulo(articulo);
-    this.messageService.newMessage('success', 'Articulo eliminado!', '');
+    this.messageService.newGrowlMessage('success', 'Articulo eliminado!', '');
   }
 
   seleccionarArticulo(art: Article) {

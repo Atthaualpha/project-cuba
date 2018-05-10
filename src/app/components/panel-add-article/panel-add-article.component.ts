@@ -49,7 +49,7 @@ export class PanelAddArticleComponent implements OnInit {
       this.messageService.newGrowlMessage(
         'error',
         'Valoración superada ',
-        'La valoracion no puede ser mayor a 900 puntos'
+        'La valoracion no puede ser mayor a 950 puntos'
       );
     }
   }
@@ -66,6 +66,8 @@ export class PanelAddArticleComponent implements OnInit {
           );
         }
         return { invalid: true };
+      } else {
+        return null;
       }
     };
   }

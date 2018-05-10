@@ -14,14 +14,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let artl of articles">
-        <th scope="row">{{ artl.idArticulo }}</th>
+      <tr *ngFor="let artl of articles" >
+        <th scope="row" pTooltip="Enter your username">{{ artl.idArticulo }}</th>
         <td>{{ artl.nombre }}</td>
         <td>{{ artl.unidadMedida }}</td>
         <td>{{ artl.cantidadMax }}</td>
         <td>{{ artl.valoracion }}</td>
         <td>
-          <button style="background-color: transparent; border: none; cursor: pointer;" (click)="seleccionarArticulo(artl)">
+          <button *ngIf="artl.cantidadMax" style="background-color: transparent; border: none; cursor: pointer;" (click)="seleccionarArticulo(artl)">
             <i class="fas fa-cart-arrow-down fa-2x"></i>
           </button>
         </td>

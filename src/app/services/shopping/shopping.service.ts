@@ -66,7 +66,7 @@ export class ShoppingService {
         ? this.valoracionTotal
         : this.calcularTotalValoracion();
       valoracion += (cantidadActual - cantidadAnterior) * valoracionActual;
-      if (valoracion > 900) {
+      if (valoracion > 950) {
         return true;
       } else {
         this.valoracionTotal = valoracion;
@@ -78,6 +78,8 @@ export class ShoppingService {
         : this.calcularTotalValoracion();
       valoracion -= (cantidadAnterior - cantidadActual) * valoracionActual;
       this.valoracionTotal = valoracion;
+
+      return false;
     }
   }
 
@@ -129,7 +131,7 @@ export class ShoppingService {
    * @description devuelve un articulo especifico
    * @param art @
    */
-  obtenerArticulo(idCap: number, idArt: number): Article {
+  obtenerArticulo(idCap: number, idArt: number): Article | undefined {
     this.validarListaArticulos();
     return this.articulos.find(function(art) {
       return art.idCapitulo === idCap && art.idArticulo === idArt;

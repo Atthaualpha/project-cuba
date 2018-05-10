@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class MessagesEmitService {
-  message = [];
-  growlMessage = [];
+  message: Object[] = [] ;
+  growlMessage: Object[] = [];
 
   constructor() {}
 
@@ -37,14 +37,6 @@ export class MessagesEmitService {
 
   clearMessage() {
     this.message = [];
-  }
-
-  getMessage(): string[] {
-    return this.message;
-  }
-
-  getGrowlMessage(): string[] {
-    return this.growlMessage;
   }
 
   hideMessage() {
