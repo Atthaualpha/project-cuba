@@ -78,7 +78,8 @@ export class PanelAddArticleComponent implements OnInit {
     if (this.articulo !== undefined) {
       const articuloShop = this.shoppingService.obtenerArticulo(
         this.articulo.idCapitulo,
-        this.articulo.idArticulo
+        this.articulo.idArticulo,
+        this.articulo.idItem
       );
       if (articuloShop) {
         this.articulo.cantidadActual = articuloShop.cantidadActual;

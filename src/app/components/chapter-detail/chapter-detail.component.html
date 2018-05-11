@@ -14,9 +14,9 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let artl of articles" >
-        <th scope="row" pTooltip="Enter your username">{{ artl.idArticulo }}</th>
-        <td>{{ artl.nombre }}</td>
+      <tr *ngFor="let artl of articles" [style.background]="!artl.cantidadMax ? '#cccccc' : ''">
+        <th scope="row">{{ artl.idArticulo }}.{{ artl.idItem }}</th>
+        <td>{{ artl.nombre }} <i *ngIf="artl.observacion" pTooltip="{{artl.observacion}}" class="fas fa-info-circle"></i></td>
         <td>{{ artl.unidadMedida }}</td>
         <td>{{ artl.cantidadMax }}</td>
         <td>{{ artl.valoracion }}</td>

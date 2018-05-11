@@ -1,8 +1,11 @@
-<p-dialog [(visible)]="panelAddArticle.getDisplay" [modal]="true" [responsive]="true" [width]="420" [minWidth]="250"
-  (onHide)="panelAddArticle.closePanelAddArticle()">
+<p-dialog [(visible)]="panelAddArticle.getDisplay" [modal]="true" [responsive]="true" [width]="420" [minWidth]="250" (onHide)="panelAddArticle.closePanelAddArticle()">
   <p-header>
     Adicionar Articulo
   </p-header>
+  <div class="header-text">
+    <label>{{articulo.nombre}}</label>
+    <hr>
+  </div>
   <form [formGroup]="validateArticle" #formArt="ngForm" *ngIf="articulo">
     <div *ngIf="articulo.cantidadMax">
       <div class="text-center">

@@ -19,7 +19,7 @@
       <tbody>
         <tr *ngFor="let artl of obtenerArticulos(); let idx = index;">
           <th scope="row">{{ idx + 1 }}</th>
-          <td>{{ artl.nombre }}</td>
+          <td>{{ artl.nombre }} <i *ngIf="artl.observacion" pTooltip="{{artl.observacion}}" class="fas fa-info-circle"></i></td>
           <td>{{ artl.unidadMedida }}</td>
           <td class="text-center">{{ artl.cantidadMax }}</td>
           <td class="text-center">{{ artl.valoracion }}</td>

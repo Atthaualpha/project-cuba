@@ -90,7 +90,8 @@ export class ShoppingService {
   validarExistenciaArticulo(articulo: Article): number {
     const indiceArticuloShop = this.obtenerIndiceArticulo(
       articulo.idCapitulo,
-      articulo.idArticulo
+      articulo.idArticulo,
+      articulo.idItem
     );
     if (indiceArticuloShop !== -1) {
       return indiceArticuloShop; // existe articulo
@@ -131,10 +132,10 @@ export class ShoppingService {
    * @description devuelve un articulo especifico
    * @param art @
    */
-  obtenerArticulo(idCap: number, idArt: number): Article | undefined {
+  obtenerArticulo(idCap: number, idArt: number, idItem: number | null = null): Article | undefined {
     this.validarListaArticulos();
     return this.articulos.find(function(art) {
-      return art.idCapitulo === idCap && art.idArticulo === idArt;
+      return art.idCapitulo === idCap && art.idArticulo === idArt && art.idItem === idItem;
     });
   }
 
@@ -145,10 +146,10 @@ export class ShoppingService {
    * @param idCap
    * @param idArt
    */
-  obtenerIndiceArticulo(idCap: number, idArt: number): number {
+  obtenerIndiceArticulo(idCap: number, idArt: number, idItem: number | null = null): number {
     this.validarListaArticulos();
     return this.articulos.findIndex(function(art, index) {
-      return art.idCapitulo === idCap && art.idArticulo === idArt;
+      return art.idCapitulo === idCap && art.idArticulo === idArt && art.idItem === idItem;
     });
   }
 
